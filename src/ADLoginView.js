@@ -108,7 +108,7 @@ export default class ADLoginView extends React.Component {
           userAgent={this.props.userAgent}
           renderError={() => renderError(this.refs.ADLoginView.reload)}
           startInLoadingState={false}
-          injectedJavaScript={js}}/>) : null
+          injectedJavaScript={js}/>) : null
     )
   }
 
