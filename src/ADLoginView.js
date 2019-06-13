@@ -1,11 +1,11 @@
 // @flow
 import React, {Component} from 'react'
-import {WebView, Dimensions, AsyncStorage, Platform} from 'react-native'
+import {Dimensions, AsyncStorage, Platform} from 'react-native'
 import CONST from './const.js'
 import ReactNativeAD from './ReactNativeAD.js'
 import Timer from 'react-timer-mixin'
 import log from './logger'
-
+import { WebView } from 'react-native-webview';
 const loginUrl = 'https://login.microsoftonline.com/<tenant id>/oauth2/authorize'
 const tokenUrl = 'https://login.microsoftonline.com/common/oauth2/token'
 
@@ -87,10 +87,7 @@ export default class ADLoginView extends React.Component {
           ref="ADLoginView"
           automaticallyAdjustContentInsets={false}
           style={[this.props.style, {
-            flex:1,
-            alignSelf : 'stretch',
-            width : Dimensions.get('window').width,
-            height : Dimensions.get('window').height
+            flex:1
           }]}
           source={{uri: this.state.page}}
           javaScriptEnabled={true}
@@ -111,8 +108,7 @@ export default class ADLoginView extends React.Component {
           userAgent={this.props.userAgent}
           renderError={() => renderError(this.refs.ADLoginView.reload)}
           startInLoadingState={false}
-          injectedJavaScript={js}
-          scalesPageToFit={true}/>) : null
+          injectedJavaScript={js}}/>) : null
     )
   }
 
